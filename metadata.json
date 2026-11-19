@@ -1,0 +1,6 @@
+{
+  "name": "WORLD // OBSERVER",
+  "description": "An atmospheric 2D pixel-illusion AI social sandbox simulation where autonomous inhabitants form memories, relationships, and emergent stories.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

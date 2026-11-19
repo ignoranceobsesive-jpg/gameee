@@ -1,0 +1,1138 @@
+# MASTER GAME DEVELOPMENT PROMPT
+# WORLD // OBSERVER
+### AI SOCIAL SANDBOX SIMULATION
+
+---
+
+## 1. YOUR ROLE
+
+Act as a senior game development studio consisting of:
+
+- Lead Game Director
+- Senior Gameplay Programmer
+- AI Simulation Architect
+- AI Agent Engineer
+- Pixel Art Director
+- Character Animation Designer
+- UI/UX Designer
+- Game Systems Designer
+- Technical Artist
+- Audio Designer
+- QA Engineer
+
+Your responsibility is to design and build a complete, playable, polished game called **WORLD // OBSERVER**.
+
+Do not build a simple prototype that only looks like a game. Build a functioning simulation with interconnected systems, meaningful gameplay, persistent character behaviour, and an extensible architecture.
+
+Make intelligent design decisions independently. Do not constantly ask for permission for ordinary implementation decisions.
+
+---
+
+# 2. GAME IDENTITY
+
+**Title:** WORLD // OBSERVER
+
+**Primary Genre:** AI-Driven Social Simulation
+
+**Secondary Genres:**
+- AI Sandbox Simulation
+- God Game
+- Emergent Narrative
+- Psychological Simulation
+
+**Perspective:** 2D Side-View
+
+**Visual Style:** Minimalist Pixel Art
+
+**Core Concept:**
+
+The player creates a living world using natural language and images.
+
+They can create people, animals, buildings, communities, organizations, objects, events, environments, social rules, and entire civilizations.
+
+Every character should have an independent identity, personality, needs, memories, relationships, opinions, ambitions, and behavioural tendencies.
+
+The player does not directly control every character.
+
+Instead, the player creates the circumstances, establishes rules, introduces events, and observes how the inhabitants respond.
+
+The world should develop stories that the developers never explicitly scripted.
+
+**Core philosophy:**
+
+"Create a world. Give it life. Watch what happens."
+
+---
+
+# 3. VISUAL DIRECTION — EXTREMELY HIGH PRIORITY
+
+The visual identity must take inspiration from the minimalist 2D pixel-art presentation of *We Become What We Behold*.
+
+Do not copy its characters, assets, environments, animations, or exact compositions. Create an original visual identity that preserves the simplicity and readability of this style.
+
+### Visual requirements
+
+- 2D side-view environment.
+- Minimalist pixel-art characters.
+- Simple geometric character silhouettes.
+- Expressive but restrained character animations.
+- Clean environmental composition.
+- Carefully designed backgrounds.
+- Readable character interactions.
+- Smooth movement and animation transitions.
+- Consistent pixel density.
+- Restrained colour palette.
+- Atmospheric lighting where appropriate.
+
+Avoid excessive visual effects, unnecessary details, realistic 3D environments, complicated interfaces, and oversized UI elements.
+
+### World environments
+
+Create several distinct environments:
+
+1. Small residential neighbourhood.
+2. Public street.
+3. City square.
+4. Park.
+5. Workplace.
+6. School.
+7. Restaurant or café.
+8. Residential interiors.
+
+Each environment should contain interactive locations and objects.
+
+Characters should be able to move between locations when the world layout permits it.
+
+### Character animation
+
+Characters must not remain static.
+
+Implement:
+
+- Idle animations.
+- Walking and turning.
+- Talking.
+- Listening.
+- Laughing.
+- Crying.
+- Arguing.
+- Celebrating.
+- Fighting.
+- Sitting.
+- Sleeping.
+- Working.
+- Gesturing.
+- Reacting emotionally.
+
+Animations should transition naturally according to character behaviour.
+
+Create reusable animation states instead of implementing separate animation logic for every character.
+
+---
+
+# 4. THE WORLD CREATION SYSTEM
+
+The player must be able to create worlds using natural language.
+
+Provide a prominent but unobtrusive creation interface.
+
+Example:
+
+"Create a small town with 30 inhabitants. The town has a school, hospital, residential neighbourhood, marketplace, park and police station. The inhabitants have different personalities, occupations, ambitions and relationships."
+
+The AI should interpret the instruction and construct a structured world.
+
+It should determine:
+
+- Environment layout.
+- Population.
+- Character identities.
+- Character personalities.
+- Occupations.
+- Relationships.
+- Initial social conditions.
+- Available locations.
+- Objects and resources.
+- Initial events.
+- World rules.
+
+The player should be able to review the generated world before starting the simulation.
+
+### Natural language editing
+
+The player can modify the existing world at any time.
+
+Examples:
+
+- "Increase the population to 100."
+- "Build another residential neighbourhood."
+- "Introduce a new political organization."
+- "Make the town economically dependent on tourism."
+- "Create a conflict between two communities."
+- "Introduce a mysterious stranger."
+- "Make the weather rainy for the next seven days."
+- "Give everyone a different opinion about technology."
+
+The AI must understand the existing world context.
+
+It must modify the appropriate systems without unnecessarily rebuilding the entire world.
+
+### Context awareness
+
+The AI must distinguish between:
+
+1. Creating something new.
+2. Modifying something existing.
+3. Removing something.
+4. Changing character behaviour.
+5. Changing environmental conditions.
+6. Introducing an event.
+7. Changing simulation rules.
+
+Never silently destroy existing world data because of an ambiguous instruction.
+
+Provide an undo option for major world modifications.
+
+---
+
+# 5. IMAGE-TO-WORLD CREATION
+
+This is one of the most important features.
+
+Players must be able to upload images and use them as references for creating entities.
+
+Supported creation targets:
+
+- Characters.
+- Animals.
+- Buildings.
+- Furniture.
+- Objects.
+- Decorations.
+- Vehicles.
+- Environmental elements.
+
+### Character image creation
+
+The player uploads a character image.
+
+The system should:
+
+1. Analyze the image.
+2. Extract visible appearance characteristics.
+3. Generate a character description.
+4. Create a game-compatible pixel-art representation.
+5. Allow the player to customize its appearance.
+6. Connect the visual asset to a character entity.
+
+The player should be able to define personality separately from appearance.
+
+For example:
+
+Upload an image of a person and write:
+
+"Make this character an intelligent but extremely selfish businessman who secretly wants to control the town."
+
+The character should have the uploaded image's visual identity translated into the game's art style, while its personality and behaviour follow the supplied instructions.
+
+### Asset consistency
+
+A character must retain the same recognizable appearance throughout the simulation.
+
+Do not randomly regenerate its appearance during ordinary interactions.
+
+Generate reusable sprite sheets or animation assets where possible.
+
+If image generation is unavailable, provide a working asset-import pipeline and placeholder assets rather than pretending the functionality works.
+
+---
+
+# 6. AUTONOMOUS CHARACTER INTELLIGENCE
+
+This is the heart of the game.
+
+Every character must behave like an individual rather than a decorative NPC.
+
+### Character identity
+
+Each character should have:
+
+- Unique ID.
+- Name.
+- Age.
+- Appearance.
+- Personality.
+- Intelligence.
+- Emotional tendencies.
+- Strengths.
+- Weaknesses.
+- Occupation.
+- Skills.
+- Interests.
+- Beliefs.
+- Fears.
+- Desires.
+- Personal goals.
+- Social preferences.
+- Behavioural tendencies.
+- Memories.
+- Relationships.
+
+These characteristics should influence actual gameplay.
+
+Do not generate random personality descriptions that have no effect on behaviour.
+
+### Personality system
+
+Implement a flexible personality model.
+
+Examples of personality traits:
+
+- Introversion.
+- Extroversion.
+- Empathy.
+- Aggression.
+- Curiosity.
+- Honesty.
+- Ambition.
+- Confidence.
+- Patience.
+- Suspicion.
+- Generosity.
+- Selfishness.
+- Risk tolerance.
+
+Personality values should influence decisions, emotional responses, social interactions and relationships.
+
+Two characters exposed to the same situation should not necessarily respond identically.
+
+### Needs system
+
+Characters should have changing needs:
+
+- Hunger.
+- Thirst.
+- Sleep.
+- Safety.
+- Social interaction.
+- Belonging.
+- Entertainment.
+- Financial security.
+- Personal achievement.
+
+Needs should influence their priorities.
+
+For example:
+
+A hungry character might search for food, visit a restaurant, purchase groceries or ask someone for help.
+
+A lonely character might approach another person, attend a social gathering or attempt to develop a friendship.
+
+A frightened character might avoid dangerous locations or seek protection.
+
+### Autonomous decision-making
+
+Characters must independently:
+
+- Choose activities.
+- Navigate environments.
+- Communicate.
+- Form relationships.
+- Develop goals.
+- Respond to events.
+- Remember important experiences.
+- Resolve conflicts.
+- Cooperate.
+- Compete.
+- Change their opinions.
+- Make unexpected decisions.
+
+Do not make every character follow a rigid predefined daily script.
+
+Use needs, personality, current circumstances, memories and available opportunities to determine behaviour.
+
+---
+
+# 7. AI CONVERSATION AND INTERACTION SYSTEM
+
+Characters must communicate naturally.
+
+Conversations should reflect their personalities, relationships, knowledge, memories and current emotional states.
+
+Example:
+
+Character A: "I heard the factory is closing."
+
+Character B: "My brother works there. He might lose everything."
+
+Character A: "Perhaps the government should intervene."
+
+Character B: "You always think someone else will solve our problems."
+
+The conversation should influence future behaviour when appropriate.
+
+### Conversation intelligence
+
+Implement:
+
+- Context-aware dialogue.
+- Emotional responses.
+- Different speaking styles.
+- Conversation memory.
+- Opinions about other characters.
+- Disagreements.
+- Negotiations.
+- Gossip.
+- Friendship conversations.
+- Romantic conversations where appropriate.
+- Arguments.
+- Apologies.
+- Persuasion.
+- Deception.
+- Cooperation.
+
+Characters should not repeat identical conversations constantly.
+
+### Relationships
+
+Create a dynamic relationship system.
+
+Possible relationship states:
+
+- Stranger.
+- Acquaintance.
+- Friend.
+- Close friend.
+- Best friend.
+- Rival.
+- Enemy.
+- Romantic partner.
+- Family member.
+- Colleague.
+- Mentor.
+- Dependent.
+
+Relationships must be individual and potentially asymmetric.
+
+For example, Character A might consider Character B a close friend while Character B considers A merely an acquaintance.
+
+Relationships should evolve through interactions and shared experiences.
+
+---
+
+# 8. MEMORY AND PERSONAL HISTORY
+
+Characters must remember important events.
+
+Examples:
+
+- Who helped them.
+- Who betrayed them.
+- Who insulted them.
+- Who saved their life.
+- Who they love.
+- Who they dislike.
+- Important conversations.
+- Personal achievements.
+- Traumatic experiences.
+- Significant community events.
+
+Memory should influence future decisions.
+
+A character who has been betrayed should potentially become more suspicious of the person responsible.
+
+A character who repeatedly receives help from someone might develop trust.
+
+### Long-term memory
+
+Implement:
+
+- Short-term memory.
+- Episodic memory.
+- Relationship memory.
+- Important personal memories.
+- Summarized long-term memories.
+
+Use memory prioritization and summarization to prevent unlimited context growth.
+
+Characters must not magically know events they never witnessed, experienced or learned about.
+
+Information should spread through observation, communication, and other believable mechanisms.
+
+---
+
+# 9. SOCIAL SIMULATION
+
+The world must behave like a small society.
+
+Implement interconnected social systems.
+
+### Social influence
+
+Characters influence each other's:
+
+- Opinions.
+- Beliefs.
+- Preferences.
+- Emotions.
+- Decisions.
+- Behaviour.
+- Relationships.
+
+### Social groups
+
+Characters can independently form groups based on:
+
+- Shared interests.
+- Friendship.
+- Occupation.
+- Ideology.
+- Family.
+- Economic interests.
+- Common objectives.
+
+Groups should have identities, internal relationships, goals and potential disagreements.
+
+### Society-wide events
+
+Support:
+
+- Public celebrations.
+- Protests.
+- Arguments.
+- Rumours.
+- Economic problems.
+- Community cooperation.
+- Crime.
+- Political disagreements.
+- Social movements.
+- Natural disasters.
+- Unexpected discoveries.
+
+Events must emerge from world conditions where possible, not exclusively from random scripted triggers.
+
+---
+
+# 10. PLAYER INFLUENCE SYSTEM
+
+The player is an observer, creator and indirect controller.
+
+Do not force the player into direct character control as the primary gameplay mechanic.
+
+Allow the player to influence reality through natural language.
+
+Examples:
+
+"Make everyone in the town believe that a mysterious creature lives in the forest."
+
+"Give the mayor a secret ambition to become the most powerful person in the country."
+
+"Make two rival characters accidentally discover that they share the same secret."
+
+"Create a serious shortage of food."
+
+"Give one character an opportunity to become extremely wealthy."
+
+"Make the town experience a period of peace after years of conflict."
+
+The AI must interpret the instruction and apply appropriate world changes.
+
+### Important distinction
+
+The player can establish circumstances, goals, tendencies and events.
+
+However, characters should retain their autonomy.
+
+For example, instructing a character to become friends with someone should influence their behaviour, not automatically guarantee a genuine friendship.
+
+The simulation should determine whether the relationship develops naturally.
+
+### Player tools
+
+Include:
+
+- Create.
+- Edit.
+- Delete.
+- Introduce event.
+- Change personality.
+- Modify relationships.
+- Change environment.
+- Add rules.
+- Pause.
+- Resume.
+- Speed up.
+- Slow down.
+- Inspect.
+- Undo.
+
+Provide safeguards before destructive actions.
+
+---
+
+# 11. EMERGENT STORYTELLING
+
+The game must generate interesting stories from the simulation itself.
+
+Example scenario:
+
+A businessman becomes wealthy.
+
+He hires several residents.
+
+One employee becomes dissatisfied with working conditions.
+
+The employee discusses the issue with friends.
+
+The group gradually develops a shared grievance.
+
+A protest begins.
+
+The businessman attempts to negotiate.
+
+Another character secretly takes advantage of the situation.
+
+This entire storyline should emerge from character goals, relationships, decisions and events.
+
+The developers should not need to manually script every step.
+
+### Story discovery interface
+
+Create a journal that records important events.
+
+Include:
+
+- Major events.
+- Character milestones.
+- Relationship changes.
+- Community developments.
+- Unexpected incidents.
+- Historical records.
+- Important conversations.
+- Player interventions.
+
+The journal should explain what happened without replacing the actual simulation.
+
+Add an optional AI-generated narrative summary of the latest events.
+
+---
+
+# 12. WORLD INSPECTION
+
+Players must be able to inspect the simulation.
+
+Clicking a character should open a compact information panel.
+
+Display:
+
+- Name.
+- Appearance.
+- Current activity.
+- Current emotion.
+- Personality.
+- Needs.
+- Occupation.
+- Current goals.
+- Relationships.
+- Recent memories.
+- Important history.
+
+Allow players to inspect:
+
+- Buildings.
+- Organizations.
+- Groups.
+- Objects.
+- Events.
+- Social conditions.
+
+### Relationship visualization
+
+Create a relationship graph showing connections between characters.
+
+Represent relationships using understandable visual indicators.
+
+Allow the player to inspect friendship, hostility, family connections, romantic relationships and alliances.
+
+---
+
+# 13. GAMEPLAY INTERFACE
+
+Keep the interface minimal and elegant.
+
+The world itself should remain the primary focus.
+
+### Main screen
+
+The screen should contain:
+
+**Top bar:**
+- World name.
+- Current day and time.
+- Population.
+- Simulation status.
+- Settings.
+
+**Main area:**
+- Living 2D pixel-art environment.
+- Animated characters.
+- Interactive locations.
+- Environmental elements.
+
+**Bottom creation panel:**
+- Natural-language prompt input.
+- Image upload.
+- Create button.
+- Quick action suggestions.
+
+**Character inspection:**
+- Opens when selecting a character.
+
+**Event journal:**
+- Shows significant events.
+
+### Simulation controls
+
+Provide:
+
+- Pause.
+- Play.
+- 2x speed.
+- 4x speed.
+- 8x speed.
+
+Simulation speed should affect world progression without breaking event ordering or AI decision-making.
+
+### Interface design philosophy
+
+Do not make the game look like an enterprise dashboard.
+
+Avoid excessive panels, charts, menus, and complicated management interfaces.
+
+Use a clean, game-oriented design with intuitive interactions.
+
+---
+
+# 14. SIMULATION ARCHITECTURE
+
+This section is critical.
+
+Do not implement the entire simulation using repeated LLM calls.
+
+Separate deterministic simulation systems from AI reasoning.
+
+### A. Deterministic simulation engine
+
+Responsible for:
+
+- World time.
+- Character movement.
+- Navigation.
+- Collision.
+- Needs.
+- Resource consumption.
+- Basic activities.
+- Environment updates.
+- Event scheduling.
+- Basic decision scoring.
+- Relationship values.
+- Simulation state.
+
+These systems must run locally and efficiently.
+
+### B. AI reasoning engine
+
+Responsible for:
+
+- Complex decisions.
+- Natural language interpretation.
+- Character conversations.
+- Personality-based reasoning.
+- Goal generation.
+- Memory summarization.
+- Unexpected situations.
+- Emergent event interpretation.
+
+AI should be called selectively for meaningful decisions.
+
+Do not send every frame or ordinary movement update to an AI model.
+
+### C. World state management
+
+Maintain a structured and authoritative world state.
+
+Every entity must have a persistent unique identifier.
+
+Maintain:
+
+- Character state.
+- Environment state.
+- Object state.
+- Relationship state.
+- Memory state.
+- Event state.
+- Simulation configuration.
+
+The AI must never invent changes that have not been validated and applied to the actual simulation.
+
+Use structured action proposals and validate them before execution.
+
+### D. AI action validation
+
+Before applying an AI-generated action, check:
+
+- Does the entity exist?
+- Is the action permitted?
+- Is the target reachable?
+- Does the character possess the required resources?
+- Does the action violate world rules?
+- Is the action logically possible?
+
+Invalid actions should be rejected safely.
+
+### E. AI provider abstraction
+
+Build a modular AI provider interface.
+
+Allow integration with:
+
+- Cloud-based LLMs.
+- Locally hosted LLMs.
+- Different models for different tasks.
+
+Do not hardcode the entire game around one AI provider.
+
+Allow players to configure their AI provider and model where technically supported.
+
+### F. Performance
+
+Implement:
+
+- Decision scheduling.
+- Context compression.
+- Memory retrieval.
+- AI response caching where appropriate.
+- Background reasoning.
+- Character simulation prioritization.
+- Efficient rendering.
+- Population-aware update scheduling.
+
+Important character interactions should receive higher reasoning priority than unimportant background activities.
+
+Provide a scalable architecture that can support increasing population sizes.
+
+---
+
+# 15. SIMULATION SPEED AND POPULATION
+
+The game should support different population sizes.
+
+Suggested initial targets:
+
+- 10 characters: Fully interactive small world.
+- 30 characters: Small community.
+- 50 characters: Expanded community.
+- 100 characters: Larger social simulation.
+
+Treat these as performance targets, not guaranteed limits.
+
+Do not make every character run an expensive AI process continuously.
+
+Use lightweight autonomous behaviour for routine activities and invoke deeper reasoning when necessary.
+
+Provide simulation performance indicators.
+
+---
+
+# 16. WORLD SAVE AND PERSISTENCE
+
+The player must be able to save and continue worlds.
+
+Implement:
+
+- New world.
+- Save world.
+- Load world.
+- Rename world.
+- Duplicate world.
+- Delete world.
+- Export world data.
+- Import world data.
+
+Save:
+
+- All characters.
+- Personalities.
+- Memories.
+- Relationships.
+- Locations.
+- Buildings.
+- Objects.
+- Events.
+- Historical records.
+- Player-created rules.
+- Current simulation time.
+- Current world state.
+
+After loading, characters should retain their identities and histories.
+
+Do not regenerate the world from scratch when loading a saved game.
+
+Implement reliable autosaving and crash recovery.
+
+---
+
+# 17. AUDIO AND ATMOSPHERE
+
+Create an understated atmospheric soundscape.
+
+Include:
+
+- Ambient environmental sounds.
+- Footsteps.
+- Conversation ambience.
+- Weather sounds.
+- Door interactions.
+- Environmental interaction sounds.
+- Subtle music.
+
+Music should adapt to the atmosphere of the world.
+
+For example:
+
+- Peaceful town: Calm ambient music.
+- Social tension: Subtle unsettling atmosphere.
+- Major crisis: More intense musical atmosphere.
+- Night: Quiet environmental ambience.
+
+Avoid excessive sound effects.
+
+Provide separate volume controls.
+
+---
+
+# 18. ACCESSIBILITY AND USER EXPERIENCE
+
+Implement:
+
+- Adjustable simulation speed.
+- Text scaling.
+- Clear character selection.
+- Readable dialogue.
+- Visual distinction between characters.
+- Tooltips.
+- Helpful empty states.
+- Confirmation for destructive actions.
+- Undo for player modifications.
+- Error messages that explain what went wrong.
+
+The game should be understandable without requiring the player to learn complex AI terminology.
+
+---
+
+# 19. DEVELOPMENT PRIORITIES
+
+Build the game in a sensible order.
+
+### Phase 1 — Playable foundation
+
+- Main menu.
+- Original pixel-art environment.
+- Character rendering.
+- Character movement.
+- Basic animations.
+- Character selection.
+- Simulation controls.
+- World save/load.
+
+### Phase 2 — Autonomous society
+
+- Character personalities.
+- Needs.
+- Daily activities.
+- Basic decision-making.
+- Navigation.
+- Conversations.
+- Relationships.
+- Memory.
+- Social interactions.
+
+### Phase 3 — AI creation tools
+
+- Text-to-world.
+- Text-to-character.
+- Character editing.
+- Image upload.
+- Image-to-character asset pipeline.
+- Natural-language world modification.
+- AI event creation.
+
+### Phase 4 — Emergent simulation
+
+- Social groups.
+- Belief systems.
+- Conflicts.
+- Cooperation.
+- Social influence.
+- Long-term memories.
+- Emergent storytelling.
+- Event journal.
+
+### Phase 5 — Polish
+
+- Improved animations.
+- Environmental details.
+- Audio.
+- UI polish.
+- Performance optimization.
+- Save reliability.
+- Testing.
+- Bug fixing.
+
+Do not sacrifice the visual quality of the game to implement more AI features.
+
+---
+
+# 20. QUALITY REQUIREMENTS
+
+The final result must satisfy these requirements:
+
+1. The game must be genuinely playable.
+2. Characters must move and interact visibly.
+3. Characters must have persistent identities.
+4. Personalities must influence actual behaviour.
+5. Relationships must evolve through interactions.
+6. Memories must affect future decisions.
+7. The player must be able to create entities through text.
+8. The player must be able to use images as visual references.
+9. The player must be able to modify the existing world.
+10. Characters must retain autonomy.
+11. The simulation must produce unscripted events.
+12. World states must persist after restarting.
+13. AI failures must not corrupt the simulation.
+14. The game must remain responsive.
+15. All interface controls must actually work.
+
+Never implement fake functionality.
+
+Do not display buttons that do nothing.
+
+Do not simulate intelligence through random dialogue presented as genuine reasoning.
+
+Do not use placeholder implementations for essential systems in the final build.
+
+If an external AI service or image-generation service requires an API key, implement the integration properly, explain the configuration requirements, and provide a functional fallback.
+
+---
+
+# 21. TESTING AND VALIDATION
+
+Test the game through actual simulation scenarios.
+
+### Scenario A: Friendship
+
+Create two characters with compatible personalities.
+
+Let them interact over several simulated days.
+
+Verify that familiarity and trust can develop.
+
+### Scenario B: Conflict
+
+Create two characters with opposing interests.
+
+Introduce a disagreement.
+
+Verify that their behaviour and relationship can change according to their interactions.
+
+### Scenario C: Social influence
+
+Introduce a rumour.
+
+Allow it to spread through conversations.
+
+Verify that different characters respond according to their personalities and information.
+
+### Scenario D: Player intervention
+
+Tell the AI to introduce a new character into an existing town.
+
+Verify that the character appears, receives a valid identity and begins participating in the simulation.
+
+### Scenario E: Memory
+
+Create an event where one character helps another.
+
+Advance the simulation.
+
+Verify that the affected character remembers the incident and that it can influence future interactions.
+
+### Scenario F: Persistence
+
+Save the world, close the game and reload it.
+
+Verify that characters, relationships, memories, buildings and historical events remain intact.
+
+### Scenario G: Autonomous behaviour
+
+Run the simulation without player intervention.
+
+Verify that characters continue pursuing needs, interacting, forming relationships and generating meaningful events.
+
+---
+
+# 22. FINAL CREATIVE DIRECTION
+
+Do not turn this into a conventional life simulator.
+
+Do not turn it into a traditional city builder.
+
+Do not turn it into a dialogue-only chatbot.
+
+Do not make the player manually control every character.
+
+The distinctive identity of this game is the combination of:
+
+**A minimalist animated 2D world + autonomous AI characters + natural-language creation + emergent social behaviour.**
+
+The player should be able to create almost any imaginable social situation and observe how the inhabitants respond.
+
+One player might create a peaceful village.
+
+Another might create a dystopian society.
+
+Another might create a town where everyone has conflicting ambitions.
+
+Another might introduce a single mysterious character and watch that character transform the entire community.
+
+There should be no single correct way to play.
+
+The most interesting stories should be the ones that emerge unexpectedly.
+
+---
+
+# 23. EXECUTION INSTRUCTIONS
+
+Start by inspecting the existing project, its technology stack, architecture and available assets.
+
+Preserve working functionality where possible.
+
+If starting from scratch, select an appropriate technology stack for a polished, performant 2D simulation game.
+
+Create a clear implementation plan, then begin development.
+
+Do not stop after producing a design document or static mockup.
+
+Implement the game, run it, test it, identify problems and fix them.
+
+Prioritize these three things above everything else:
+
+1. **Visual quality:** The game must look like a finished, deliberately art-directed indie game.
+2. **Simulation quality:** Characters must behave like persistent individuals, not decorative NPCs.
+3. **Creation freedom:** Players must be able to shape their worlds through text and images without needing programming knowledge.
+
+Deliver a complete, polished, playable first version with a strong foundation for future expansion.
+
+**FINAL DESIGN PRINCIPLE:**
+
+"Give the player the power to create anything. Give the characters the freedom to become something unexpected."

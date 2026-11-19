@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-pixel: ui-monospace, 'Cascadia Mono', 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    --font-mono: ui-monospace, 'Cascadia Mono', 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    --mint-glow: #8ef6e4;
+    --amber-glow: #f5d89a;
+    --hud-bg: rgba(14, 17, 19, 0.84);
+    --hud-border: rgba(142, 246, 228, 0.25);
+    --text-scale: 1;
+  }
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #16181a;
+    color: #e2e4e1;
+    font-family: var(--font-mono);
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+.font-pixel {
+  font-family: var(--font-pixel);
+}
+
+.font-hud {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes cursor-blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+.animate-cursor-blink {
+  animation: cursor-blink 1s steps(1, end) infinite;
+}
+
+.crt-scanlines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.03) 0px,
+    rgba(255, 255, 255, 0.03) 1px,
+    rgba(0, 0, 0, 0.14) 1px,
+    rgba(0, 0, 0, 0.14) 3px
+  );
+}
+
+.metallic-frame {
+  background: linear-gradient(180deg, rgba(46, 51, 53, 0.95) 0%, rgba(25, 28, 30, 0.96) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.6),
+    0 12px 32px rgba(0, 0, 0, 0.65);
+}
+
+/* Custom thin dark scrollbar for modals */
+.observer-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.observer-scroll::-webkit-scrollbar-track {
+  background: rgba(15, 17, 19, 0.6);
+}
+.observer-scroll::-webkit-scrollbar-thumb {
+  background: rgba(142, 246, 228, 0.25);
+  border-radius: 3px;
+}
+.observer-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(142, 246, 228, 0.45);
+}

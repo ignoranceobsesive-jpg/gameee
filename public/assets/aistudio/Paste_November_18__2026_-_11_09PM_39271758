@@ -1,0 +1,1248 @@
+# CRITICAL GAME OVERHAUL: CHARACTER INTELLIGENCE, COMMAND OBEDIENCE, MYSTERY & EMERGENT DRAMA
+
+## PROJECT INSTRUCTION
+
+The current game's visual atmosphere and presentation are acceptable. However, its simulation intelligence is severely underdeveloped.
+
+Characters wander around without meaningful purposes, ignore or misinterpret player instructions, repeat meaningless conversations, have no convincing personalities, and generate almost no suspense, mystery, conflict, or unexpected behaviour.
+
+**This is a critical gameplay-system overhaul.**
+
+Do not waste time redesigning the visual identity, replacing existing environments, or adding decorative features.
+
+Preserve all functioning visual systems, characters, animations, environments, interface elements, and existing gameplay features.
+
+Your priority is to transform the existing characters into believable autonomous individuals who can understand commands, execute plans, respond intelligently, remember experiences, and develop their own stories.
+
+Do not simply add more random animations or dialogue.
+
+Rebuild the underlying intelligence.
+
+---
+
+# 1. FIRST: AUDIT THE EXISTING AI SYSTEM
+
+Before modifying anything:
+
+1. Inspect the entire existing character behaviour implementation.
+2. Find the current prompt submission handler.
+3. Identify how player instructions are processed.
+4. Determine whether commands actually modify character state.
+5. Identify all random-wandering and placeholder decision-making logic.
+6. Inspect character memory and relationship implementations.
+7. Inspect movement, navigation, and interaction systems.
+8. Inspect the existing AI model/API integration.
+9. Find any systems that display success messages without executing corresponding actions.
+
+Create a clear map of how a command travels from player input to character behaviour.
+
+Do not assume that existing systems work correctly.
+
+Do not simply add another layer on top of broken systems.
+
+Fix the actual underlying causes.
+
+---
+
+# 2. BUILD A REAL COMMAND EXECUTION ENGINE
+
+THIS IS THE HIGHEST PRIORITY.
+
+The player must have genuine authority to influence the simulation using natural language.
+
+Currently, typing instructions and receiving a message such as "World directive applied" is not sufficient.
+
+A command is only successful when its intended effects actually occur inside the simulation.
+
+### Natural-language command interpretation
+
+The system must identify:
+
+- Actors.
+- Targets.
+- Actions.
+- Locations.
+- Conditions.
+- Duration.
+- Intentions.
+- Expected outcomes.
+- Behavioural constraints.
+
+For example:
+
+"Make five angry protesters confront the man wearing the black top hat."
+
+The system must understand:
+
+Actors: Five protesters.
+
+Target: Character wearing the black top hat.
+
+Action: Confront.
+
+Emotional condition: Angry.
+
+Execution plan:
+1. Identify five suitable characters.
+2. Assign a confrontation objective.
+3. Stop their unrelated activities when appropriate.
+4. Organize their movement.
+5. Navigate them toward the target.
+6. Track the target's current position.
+7. Surround or approach the target.
+8. Initiate confrontation.
+9. Generate contextual dialogue.
+10. Allow the target to respond according to personality.
+11. Record the interaction.
+12. Update relationships and surrounding characters' reactions.
+
+The target should not remain frozen while the protesters walk toward an outdated coordinate.
+
+Characters must track moving targets.
+
+### Command execution pipeline
+
+Implement this architecture:
+
+PLAYER PROMPT
+→ INTENT RECOGNITION
+→ ENTITY RESOLUTION
+→ COMMAND PLANNING
+→ ACTION VALIDATION
+→ EXECUTION
+→ CHARACTER RESPONSE
+→ WORLD STATE UPDATE
+→ PLAYER FEEDBACK
+
+Every stage must perform real work.
+
+### Supported actions
+
+Build a reusable action system supporting:
+
+**Movement**
+- Move to.
+- Follow.
+- Escape.
+- Approach.
+- Patrol.
+- Wander with a purpose.
+- Hide.
+- Chase.
+- Guard.
+- Escort.
+
+**Social interaction**
+- Talk to.
+- Befriend.
+- Confront.
+- Argue.
+- Apologize.
+- Persuade.
+- Threaten.
+- Flirt.
+- Negotiate.
+- Gossip.
+- Betray.
+- Recruit.
+- Protect.
+
+**Covert behaviour**
+- Spy on.
+- Secretly follow.
+- Steal.
+- Sabotage.
+- Plant evidence.
+- Whisper a rumor.
+- Conceal information.
+- Investigate.
+- Eavesdrop.
+- Secretly meet.
+
+**Emotional behaviour**
+- Panic.
+- Become suspicious.
+- Become jealous.
+- Express anger.
+- Celebrate.
+- Mourn.
+- Become frightened.
+- Develop trust.
+- Lose confidence.
+
+**Special actions**
+- Attack.
+- Defend.
+- Arrest.
+- Worship.
+- Organize a gathering.
+- Start a protest.
+- Create an alliance.
+- Spread propaganda.
+- Perform a secret ritual.
+
+Each action must have an actual implementation, appropriate animation, valid preconditions, and resulting state changes.
+
+Do not advertise unsupported actions as successful.
+
+### Multi-stage directives
+
+Commands should support complex plans rather than isolated actions.
+
+Example:
+
+"Make Peep 12 secretly follow the mayor, discover what he is hiding, and report it to the journalist."
+
+Expected behaviour:
+
+1. Peep 12 receives a secret investigation objective.
+2. Peep 12 identifies the mayor.
+3. Peep 12 attempts to observe the mayor without being noticed.
+4. Peep 12 gathers information from available evidence.
+5. Suspicion increases if the mayor notices unusual behaviour.
+6. Peep 12 identifies the journalist.
+7. Peep 12 attempts to communicate the discovered information.
+8. The journalist reacts according to personality and existing beliefs.
+9. Both characters retain relevant memories.
+
+The plan must be resumable and capable of adapting when circumstances change.
+
+### Command priority
+
+Player instructions should normally have priority over ordinary autonomous activities.
+
+However:
+- Characters should retain their ability to react to immediate danger.
+- Critical survival needs must still matter.
+- Characters should not execute physically impossible actions.
+- Conflicting commands should be resolved intelligently.
+- Explicit player cancellation must interrupt assigned tasks.
+
+Support command cancellation and replacement.
+
+### Command execution feedback
+
+Show genuine execution status:
+
+- Understanding instruction.
+- Identifying characters.
+- Planning behaviour.
+- Executing actions.
+- Awaiting a target.
+- Action completed.
+- Action interrupted.
+- Action failed.
+
+For complex commands, show a short execution summary.
+
+Never announce success before the simulation confirms it.
+
+---
+
+# 3. BUILD A REAL CHARACTER BRAIN
+
+Every character needs a persistent behavioural intelligence system.
+
+Replace meaningless random wandering with a combination of:
+
+- Utility-based AI.
+- Behaviour trees or hierarchical state machines.
+- Goal-oriented action planning.
+- Event-driven reactions.
+- Personality-based decision-making.
+
+### Character mental model
+
+Each character should possess:
+
+**Identity**
+- Name.
+- Unique ID.
+- Appearance.
+- Age.
+- Occupation.
+- Personality.
+
+**Psychology**
+- Intelligence.
+- Empathy.
+- Aggression.
+- Curiosity.
+- Confidence.
+- Ambition.
+- Honesty.
+- Suspicion.
+- Selfishness.
+- Patience.
+- Risk tolerance.
+
+**Internal conditions**
+- Current emotions.
+- Fear.
+- Stress.
+- Trust.
+- Suspicion.
+- Needs.
+- Desires.
+- Current goals.
+- Long-term ambitions.
+
+**Social identity**
+- Friends.
+- Rivals.
+- Enemies.
+- Family.
+- Romantic partners.
+- Colleagues.
+- Group memberships.
+
+**Cognition**
+- Knowledge.
+- Beliefs.
+- Memories.
+- Secrets.
+- Suspicions.
+- Incorrect assumptions.
+- Personal interpretations of events.
+
+These properties must influence actual behaviour.
+
+For example:
+
+A highly suspicious character should be more likely to investigate unusual circumstances.
+
+A cowardly character should be more likely to escape dangerous confrontations.
+
+An arrogant character might refuse to apologize even after realizing they were wrong.
+
+An empathetic character might help someone even when doing so comes at a personal cost.
+
+A manipulative character might pretend to agree while secretly pursuing a different objective.
+
+Do not make personality attributes decorative statistics.
+
+---
+
+# 4. GIVE EVERY CHARACTER PERSONAL GOALS
+
+Characters should have more than one reason to exist.
+
+Implement:
+
+### Short-term goals
+
+Examples:
+- Find food.
+- Speak with a friend.
+- Finish a task.
+- Avoid an enemy.
+- Discover information.
+- Find shelter.
+- Get revenge.
+- Earn money.
+
+### Long-term ambitions
+
+Examples:
+- Become powerful.
+- Become wealthy.
+- Find love.
+- Protect their family.
+- Become respected.
+- Destroy a rival.
+- Discover a mystery.
+- Gain political influence.
+- Escape the town.
+- Establish an organization.
+
+### Dynamic goals
+
+Goals should change when circumstances change.
+
+A character who wants to become wealthy might start working.
+
+If their employer mistreats them, they might become dissatisfied.
+
+They may attempt to negotiate, resign, steal, or organize other workers depending on their personality and opportunities.
+
+This should emerge from their own decision-making rather than a scripted sequence.
+
+Characters must sometimes reject opportunities, make poor decisions, and pursue conflicting ambitions.
+
+---
+
+# 5. INTRODUCE HIDDEN IDENTITIES AND SECRET AGENDAS
+
+The society must contain things the player does not immediately know.
+
+Not every character should be completely transparent.
+
+Introduce a hidden-information system.
+
+Possible secret roles:
+
+- Secret informant.
+- Saboteur.
+- Manipulator.
+- Double agent.
+- Thief.
+- Secret activist.
+- Cult member.
+- Blackmailer.
+- Underground organizer.
+- Serial liar.
+- Conspirator.
+- Investigator.
+- Secret admirer.
+- Corrupt official.
+- Hoarder.
+
+Not every character needs a dramatic secret.
+
+Some should have ordinary private concerns, personal fears, concealed relationships, and embarrassing memories.
+
+Create varied distributions of hidden characteristics rather than making nearly everyone a villain.
+
+### Hidden information rules
+
+Each secret should contain:
+
+- Secret owner.
+- Secret description.
+- Motivation.
+- Related characters.
+- Evidence.
+- Potential witnesses.
+- Discovery conditions.
+- Consequences of exposure.
+
+Characters must protect secrets according to their personality and objectives.
+
+One character might lie.
+
+Another might avoid certain people.
+
+Another might destroy evidence.
+
+Another might accidentally reveal something while talking.
+
+The player should be able to discover secrets through observation, investigation, conversations, and events.
+
+**Never reveal every secret directly to the player.**
+
+---
+
+# 6. BUILD A MYSTERY AND SUSPENSE DIRECTOR
+
+The simulation currently lacks mystery and dramatic tension.
+
+Create an intelligent background system called the **EVENT & MYSTERY DIRECTOR**.
+
+Its job is to identify opportunities for interesting developments based on the current world state.
+
+It should not randomly throw unrelated disasters into the simulation.
+
+Instead, it should develop storylines through existing characters, hidden objectives, unresolved conflicts, and unexplained events.
+
+### Mystery mechanics
+
+Examples:
+
+- Someone disappears without explanation.
+- An unknown character secretly visits the same building every night.
+- A character has been receiving mysterious messages.
+- The mayor repeatedly meets someone in private.
+- Objects disappear from a particular location.
+- Someone is spreading contradictory rumours.
+- A character behaves differently around a specific person.
+- A secret organization is recruiting members.
+- A character knows something about an event but refuses to discuss it.
+- Someone is secretly manipulating relationships between other characters.
+
+The mystery should have a discoverable explanation.
+
+Do not introduce mysteries that never develop or receive consequences.
+
+### Suspense progression
+
+Create a system with distinct stages:
+
+**Stage 1 — Foreshadowing**
+
+Introduce subtle indications that something unusual is happening.
+
+**Stage 2 — Suspicion**
+
+Characters begin noticing inconsistencies.
+
+**Stage 3 — Investigation**
+
+Some characters independently investigate.
+
+**Stage 4 — Complication**
+
+Information is concealed, misinterpreted, or deliberately distorted.
+
+**Stage 5 — Discovery**
+
+The player or characters uncover meaningful evidence.
+
+**Stage 6 — Consequences**
+
+The revelation changes relationships, decisions, events, or the wider society.
+
+Not every mystery must follow this exact structure, and some should remain unresolved for a while.
+
+### Unpredictability
+
+Create surprising situations without sacrificing logical consistency.
+
+Examples:
+
+A trusted friend secretly cooperates with a rival.
+
+A character who seems hostile unexpectedly saves someone.
+
+A seemingly harmless person has been manipulating a community for days.
+
+A character discovers a secret that fundamentally changes their beliefs.
+
+A planned confrontation becomes an unexpected alliance.
+
+A character refuses a player instruction because their established beliefs and motivations strongly conflict with it, while still visibly attempting to respond or negotiate.
+
+The world should surprise the player through meaningful causality, not arbitrary randomness.
+
+---
+
+# 7. RUMOURS, GOSSIP AND INFORMATION PROPAGATION
+
+Build a real social information network.
+
+Characters should exchange information when they interact.
+
+Rumours should have actual state in the simulation.
+
+Each rumour should store:
+
+- Original source.
+- Information content.
+- Original event.
+- Known recipients.
+- Confidence level.
+- Accuracy.
+- Distortion history.
+- Characters who believe it.
+- Characters who dispute it.
+
+### Example
+
+Peep 7 secretly steals an object.
+
+Peep 12 witnesses the theft.
+
+Peep 12 tells Peep 9.
+
+Peep 9 tells another friend but exaggerates the story.
+
+The rumour spreads.
+
+Some characters believe it.
+
+Others defend Peep 7.
+
+The accused character discovers that people are discussing the theft and reacts.
+
+This creates a social event from a single incident.
+
+Characters must distinguish between:
+
+- What they personally witnessed.
+- What they heard from someone.
+- What they believe.
+- What they suspect.
+- What they know is false.
+
+Prevent universal knowledge.
+
+A character who is nowhere near an incident must not automatically know what happened.
+
+---
+
+# 8. BUILD A REAL FEAR, SUSPICION AND STRESS SYSTEM
+
+Add individual behavioural variables:
+
+- Fear: 0–100.
+- Suspicion: 0–100.
+- Stress: 0–100.
+- Trust: 0–100.
+- Anger: 0–100.
+- Confidence: 0–100.
+
+These values should evolve based on meaningful events.
+
+For example:
+
+When witnessing a violent confrontation:
+
+- Fear may increase.
+- Stress may increase.
+- Suspicion may increase.
+- Trust in the aggressor may decrease.
+
+When another character protects them:
+
+- Trust may increase.
+- Fear may decrease.
+- Their relationship may improve.
+
+When a suspicious character witnesses an unexplained event:
+
+- They might investigate.
+- Tell someone.
+- Secretly follow another character.
+- Avoid the location.
+- Develop an incorrect theory.
+
+These values must influence real actions and not merely display changing numbers.
+
+---
+
+# 9. SOCIAL MEMORY, GRUDGES AND REVENGE
+
+Interactions must have consequences beyond the current animation.
+
+Every meaningful event should update the relevant characters' memories.
+
+Examples:
+
+- Peep 7 insulted me.
+- Peep 4 protected me from an attacker.
+- Peep 12 stole my belongings.
+- Peep 9 told me an important secret.
+- The mayor publicly humiliated me.
+- Someone abandoned me during a crisis.
+
+Implement emotional memory.
+
+A character might remember an incident differently from the person who experienced it.
+
+### Grudge system
+
+If one character attacks, betrays, humiliates or steals from another:
+
+- Trust can decrease.
+- Hostility can increase.
+- Fear may increase.
+- Conversations may become more aggressive.
+- Future cooperation may become less likely.
+- Revenge intentions may develop.
+
+But revenge should not be automatic.
+
+One character might forgive.
+
+Another might retaliate.
+
+Another might seek help.
+
+Another might pretend everything is fine while secretly planning something.
+
+### Relationship change
+
+Relationships must evolve over time and through shared experiences.
+
+Include friendship development, falling out, jealousy, reconciliation, betrayal and unexpected alliances.
+
+Persist these changes across saved sessions.
+
+---
+
+# 10. PERSONALITY-DRIVEN REACTIONS
+
+The same event should produce different responses from different characters.
+
+Example:
+
+A fight breaks out in the public square.
+
+Character A:
+Runs away immediately.
+
+Character B:
+Tries to stop the fight.
+
+Character C:
+Watches from a distance.
+
+Character D:
+Calls the authorities.
+
+Character E:
+Starts filming.
+
+Character F:
+Uses the situation to steal something.
+
+Character G:
+Recognizes someone involved and becomes emotionally distressed.
+
+These actions must be determined by personality, goals, relationships, memories, information and circumstances.
+
+Avoid assigning every character the same reaction.
+
+---
+
+# 11. GIVE CHARACTERS VISIBLE INTENTIONS
+
+Make intelligence observable through the game interface.
+
+The player should understand what a character is currently attempting to accomplish without having to open an external AI debug console.
+
+Show concise status and intention indicators.
+
+Examples:
+
+- INTENT: Following the mayor.
+- INTENT: Avoiding Peep 7.
+- INTENT: Looking for food.
+- INTENT: Investigating the abandoned building.
+- INTENT: Hiding a stolen object.
+- INTENT: Spreading a rumour.
+- INTENT: Protecting a friend.
+- INTENT: Waiting for an opportunity.
+- INTENT: Secretly meeting a contact.
+- INTENT: Planning revenge.
+
+Use thought bubbles sparingly and contextual emotion indicators when appropriate.
+
+The inspector should also display a concise explanation of the active goal and the main factors influencing the action.
+
+Do not display or fabricate hidden chain-of-thought reasoning.
+
+Display only a readable intent summary and relevant decision factors.
+
+The intent shown must match the actual action being executed.
+
+---
+
+# 12. UPGRADE THE EXISTING CRT TV SYSTEM
+
+Preserve the current CRT television and turn it into a meaningful part of the simulation.
+
+The TV must be an actual information source that characters can interact with.
+
+Depending on what the TV displays, nearby characters may:
+
+- Watch.
+- Ignore it.
+- Discuss the information.
+- Become frightened.
+- Become excited.
+- Disagree.
+- Develop suspicion.
+- Spread a rumour.
+- Become influenced by propaganda.
+
+Different personalities should respond differently.
+
+A skeptical character might question the broadcast.
+
+A gullible character might immediately believe it.
+
+A politically motivated character might use it to influence others.
+
+A frightened character might avoid the location being discussed.
+
+The player's instructions should be capable of changing TV broadcasts.
+
+However, the TV must not magically control all characters.
+
+Its influence depends on whether they can see, hear, understand, and trust the broadcast.
+
+---
+
+# 13. EVENT-DRIVEN AI DIRECTOR
+
+Create an overarching system that monitors world developments.
+
+Call it:
+
+**THE OBSERVER DIRECTOR**
+
+It should continuously evaluate:
+
+- Unresolved mysteries.
+- Character goals.
+- Hidden conflicts.
+- Relationship tensions.
+- Rumour propagation.
+- Suspicious activity.
+- Unfinished plans.
+- Social instability.
+- Important discoveries.
+- Opportunities for interesting events.
+
+It should identify when a development would make the world more interesting.
+
+For example:
+
+A rivalry has been growing for several days.
+
+The Observer Director notices that both rivals are approaching the same location.
+
+It might create an opportunity for confrontation, accidental cooperation, betrayal, or an unexpected revelation depending on their objectives.
+
+It must not force a predetermined ending.
+
+Allow simulation outcomes to emerge naturally.
+
+### Dramatic pacing
+
+Avoid making every minute eventful.
+
+A believable world needs ordinary moments between important events.
+
+Support:
+
+- Calm periods.
+- Subtle tension.
+- Suspicious incidents.
+- Escalating conflicts.
+- Dramatic confrontations.
+- Unexpected revelations.
+- Recovery and consequences.
+
+Suspense is more effective when the player does not know exactly when something important will happen.
+
+---
+
+# 14. NATURAL-LANGUAGE AI INTEGRATION
+
+If an AI model is configured, connect the command interface to it properly.
+
+The AI should receive:
+
+- Player instruction.
+- Relevant world state.
+- Available entities.
+- Character profiles.
+- Relevant relationships.
+- Current events.
+- Available actions.
+- Simulation constraints.
+
+It should return structured, validated action proposals.
+
+Example conceptual response:
+
+{
+  "intent": "confront_target",
+  "actors": ["peep_07", "peep_12", "peep_15"],
+  "target": "peep_03",
+  "priority": "high",
+  "execution_plan": [
+    {
+      "action": "move_to",
+      "target": "peep_03"
+    },
+    {
+      "action": "surround",
+      "target": "peep_03"
+    },
+    {
+      "action": "confront",
+      "target": "peep_03"
+    }
+  ],
+  "duration": "until_resolved"
+}
+
+This is an illustrative structure. Implement a proper schema compatible with the existing project.
+
+The model proposes actions.
+
+The simulation engine validates and executes them.
+
+Never allow unrestricted model output to directly mutate the world state.
+
+### AI model failure handling
+
+If the API is unavailable:
+
+- Do not freeze the simulation.
+- Do not pretend that the AI responded.
+- Use a local command interpreter for supported instructions.
+- Preserve ordinary autonomous character behaviour.
+- Display a clear message when a requested capability is unavailable.
+
+If a command cannot be interpreted reliably, identify the ambiguity rather than claiming success.
+
+### Smart intent router
+
+Use a robust combination of natural-language parsing, entity recognition, intent classification and contextual interpretation.
+
+Do not depend on a handful of exact keywords.
+
+Understand variations such as:
+
+"Make him chase the woman."
+
+"Tell Peep 5 to follow the mayor."
+
+"I want someone to secretly watch the businessman."
+
+"Have the suspicious character investigate the factory."
+
+These should resolve to appropriate actions even when wording differs.
+
+---
+
+# 15. COMMAND RELIABILITY AND EXECUTION MONITORING
+
+Create a persistent command manager.
+
+Every player command should have:
+
+- Command ID.
+- Original instruction.
+- Parsed intent.
+- Assigned entities.
+- Execution plan.
+- Current execution stage.
+- Current status.
+- Completion result.
+- Failure reason if applicable.
+
+Support:
+
+- Immediate commands.
+- Multi-stage plans.
+- Persistent objectives.
+- Interrupted actions.
+- Cancelled instructions.
+- Reassigned targets.
+- Priority changes.
+
+A character must not silently abandon a player instruction.
+
+If circumstances make an action impossible, the character should adapt or report the problem.
+
+Add an internal debug panel showing:
+
+- Active goals.
+- Current actions.
+- Queued commands.
+- Failed commands.
+- AI decisions.
+- Navigation errors.
+- Recent events.
+
+This panel is for debugging and should not clutter the normal player interface.
+
+---
+
+# 16. CHARACTER AUTONOMY MUST NOT DISAPPEAR
+
+Do not solve player-command obedience by turning every character into a robot.
+
+The player has authority to influence the world, but the interesting part is how characters interpret and react to that influence.
+
+Support three directive types:
+
+**Direct orders:** Explicitly instruct a character to perform an action.
+
+**Behavioural instructions:** Change how a character behaves over time.
+
+**World directives:** Change the circumstances of the world and allow characters to react independently.
+
+Examples:
+
+Direct order:
+"Make Peep 5 follow the mayor."
+
+Behavioural instruction:
+"Make Peep 5 increasingly suspicious of the mayor."
+
+World directive:
+"Introduce evidence that the mayor has been accepting secret payments."
+
+Characters must distinguish between these instructions.
+
+An explicit order should normally execute.
+
+A behavioural instruction should influence decision-making over time.
+
+A world directive should create a state change or event that affects multiple characters.
+
+---
+
+# 17. PERFORMANCE AND ARCHITECTURE
+
+Do not make every character call an LLM every frame.
+
+Separate:
+
+**Simulation engine**
+- Movement.
+- Physics.
+- Navigation.
+- Needs.
+- Basic behaviour.
+- Event handling.
+- Relationship updates.
+
+**Character intelligence**
+- Goal selection.
+- Personality evaluation.
+- Contextual decisions.
+- Complex interactions.
+- Memory retrieval.
+
+**AI reasoning**
+- Natural-language understanding.
+- Complex planning.
+- Contextual dialogue.
+- Mystery development.
+- Long-term goal interpretation.
+
+Use scheduled decision updates and event-driven reasoning.
+
+Characters can use inexpensive local utility scoring for routine actions.
+
+Invoke more advanced AI reasoning when a meaningful decision requires it.
+
+Cache relevant context carefully.
+
+Keep the simulation responsive when AI services are slow.
+
+---
+
+# 18. VISUAL AND GAMEPLAY PRESERVATION
+
+This overhaul is primarily about intelligence and behaviour.
+
+Preserve:
+
+- Current art style.
+- Existing character sprites.
+- Current environment.
+- Existing buildings.
+- Existing CRT television.
+- Existing character animations.
+- Current camera system.
+- Existing sound and atmosphere.
+- Current world layout.
+- Existing working UI.
+
+Only add or change visual elements when necessary to communicate real behaviour.
+
+Make sure newly implemented actions use appropriate existing animations or carefully created animation states.
+
+Do not replace the existing game with a completely different project.
+
+---
+
+# 19. MANDATORY ACCEPTANCE TESTS
+
+Do not declare the overhaul complete until these scenarios have been tested in the running game.
+
+### TEST 1: Simple command obedience
+
+Player:
+
+"Make Peep 4 walk to the television and watch it."
+
+Expected:
+
+Peep 4 navigates to the TV, reaches it, turns toward it and begins watching.
+
+PASS only if actual behaviour occurs.
+
+### TEST 2: Multi-character confrontation
+
+Player:
+
+"Make five angry characters confront the man with the black top hat."
+
+Expected:
+
+- Correct target identification.
+- Five appropriate characters selected.
+- Actual movement.
+- Group coordination.
+- Visible confrontation.
+- Individual target reaction.
+- Updated memories and relationships.
+
+### TEST 3: Secret investigation
+
+Player:
+
+"Make Peep 8 secretly follow the mayor and discover what he does at night."
+
+Expected:
+
+- Peep 8 receives a persistent objective.
+- Follows the mayor.
+- Attempts to remain unnoticed.
+- Responds if detected.
+- Gathers information from observable events.
+- Records discoveries.
+
+### TEST 4: Independent intelligence
+
+Create two characters:
+
+Character A: Aggressive, arrogant and ambitious.
+
+Character B: Shy, empathetic and fearful.
+
+Introduce a confrontation.
+
+Expected:
+
+Their responses must differ meaningfully.
+
+### TEST 5: Rumour propagation
+
+Player:
+
+"Make Peep 12 secretly steal something from the shop."
+
+Allow the simulation to continue.
+
+Expected:
+
+- Theft occurs if possible.
+- Witnesses can notice it.
+- Information spreads through actual conversations.
+- Characters develop different opinions.
+- The thief reacts to possible exposure.
+
+### TEST 6: Hidden mystery
+
+Create a character with a secret agenda.
+
+Expected:
+
+- The character behaves consistently with the hidden agenda.
+- Relevant clues emerge.
+- Other characters can discover evidence.
+- The mystery develops through the simulation.
+- Discovery produces meaningful consequences.
+
+### TEST 7: Memory and revenge
+
+Have one character betray another.
+
+Advance simulation time.
+
+Expected:
+
+- The betrayed character remembers the event.
+- Their relationship changes.
+- Their future behaviour reflects the experience.
+- They may seek revenge, protection, reconciliation or avoidance.
+
+### TEST 8: Autonomous world
+
+Pause player intervention and let the simulation run.
+
+Expected:
+
+Characters continue pursuing goals, interacting, remembering, developing relationships and generating meaningful events.
+
+The world must not become lifeless when the player stops typing.
+
+### TEST 9: Command interruption
+
+Assign a character a long-running objective.
+
+Issue a new conflicting instruction.
+
+Expected:
+
+The old instruction is interrupted or reconciled appropriately. The new command is executed without leaving the character stuck.
+
+### TEST 10: Save and reload
+
+Save the simulation and reload it.
+
+Expected:
+
+- Character personalities persist.
+- Secrets persist.
+- Memories persist.
+- Relationships persist.
+- Active objectives persist where appropriate.
+- World events remain consistent.
+
+---
+
+# 20. FINAL IMPLEMENTATION INSTRUCTIONS
+
+Work directly on the existing project.
+
+Do not just explain what should be changed.
+
+Inspect the implementation, identify the real bugs, modify the code and test the results.
+
+Do not waste time producing cosmetic improvements while the intelligence system remains broken.
+
+Do not create fake AI.
+
+Do not create fake command success messages.
+
+Do not substitute random animations for actual character decisions.
+
+Do not make all characters behave identically.
+
+Do not allow characters to forget important experiences whenever they interact with someone.
+
+Do not make every mystery depend on random events without causal connections.
+
+Implement the systems in dependency order:
+
+1. Reliable command execution.
+2. Character goal and decision architecture.
+3. Navigation and action execution.
+4. Personality-based reactions.
+5. Memory and relationships.
+6. Secrets and information propagation.
+7. Mystery and suspense director.
+8. Long-term autonomous storytelling.
+9. Performance optimization.
+10. Full regression testing.
+
+After each major stage, run the game and verify that the systems work together.
+
+If the project has existing broken code, fix it rather than building competing parallel systems.
+
+At the end, provide a factual report containing:
+
+- Systems inspected.
+- Root causes identified.
+- Systems implemented.
+- Existing systems preserved.
+- Tests performed.
+- Tests passed.
+- Known limitations.
+- Remaining bugs.
+
+**ULTIMATE GOAL:**
+
+I want to feel like I am observing a living society populated by intelligent individuals, not watching decorative characters wander around a screen.
+
+When I issue a command, something meaningful must happen.
+
+When I introduce a mystery, characters should investigate, conceal information, lie, discover clues and react.
+
+When two characters interact, their personalities and history should matter.
+
+When I stop interfering, the world should continue developing its own stories.
+
+I should sometimes be surprised by what my own characters do.
+
+**Make the simulation genuinely intelligent, responsive, mysterious, unpredictable and alive.**

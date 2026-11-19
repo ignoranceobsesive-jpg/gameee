@@ -1,0 +1,831 @@
+# MASTER GAMEPLAY EXPANSION PROMPT
+# VILLAGE // AFTER DARK
+## NIGHTMARE ECOSYSTEM — DEFENSE, PROGRESSION & EMERGENT WORLD SYSTEMS
+
+### CORE DIRECTIVE
+
+Expand the existing **Village // After Dark** into a deeper, more unpredictable open-world survival experience.
+
+The game should evolve into a living world where players explore dangerous territories during the day, gather resources, construct defenses, recruit survivors, develop their village, and prepare for increasingly intelligent monster invasions at night.
+
+The world must feel alive, threatening, mysterious, and continuously evolving.
+
+This is an expansion of the existing game, NOT a complete redesign.
+
+**Preserve the existing:**
+- Core gameplay, controls, camera, movement, and player identity.
+- Existing village, world structure, characters, visual direction, and working mechanics.
+- Existing UI systems wherever possible.
+- Existing assets and systems that are already functional.
+
+Inspect the current implementation before changing anything. Extend existing systems instead of creating duplicate or disconnected systems.
+
+### ABSOLUTE DEVELOPMENT PRIORITIES
+
+1. Actual gameplay functionality comes before decorative effects.
+2. Enemy intelligence and meaningful behavior are more important than simply increasing enemy health.
+3. Every structure, weapon, resource, upgrade, and progression level must have a practical gameplay purpose.
+4. Visual quality must be exceptionally polished, with distinctive monster designs, detailed environments, atmospheric lighting, animations, particles, and environmental reactions.
+5. New systems must interact with one another rather than operate as isolated features.
+6. Maintain good performance, stable frame rates, responsive controls, and reliable saving.
+7. Never use placeholder boxes, generic cloned enemies, fake interactions, or buttons that do nothing.
+
+---
+
+# 1. DYNAMIC NIGHT WAVE SYSTEM
+
+Transform nighttime into an increasingly dangerous survival event.
+
+Night should not simply spawn random enemies. It should build suspense, communicate danger, and create tactical decisions.
+
+### 1.1 Dynamic wave progression
+
+Implement a persistent night progression system.
+
+- Night 1: Introduce basic threats and teach village defense.
+- Night 2–4: Increase enemy variety, numbers, and attack coordination.
+- Night 5: First major boss encounter.
+- Night 6–9: Introduce more dangerous combinations and specialized enemies.
+- Night 10: Second major boss encounter.
+- Continue escalating through new enemy combinations, environmental hazards, and more complex attack patterns.
+
+Every fifth night should introduce a major boss encounter.
+
+Difficulty must scale intelligently according to:
+- Current night.
+- Village population and development.
+- Number and strength of defensive structures.
+- Player equipment and progression.
+- Previous survival performance.
+
+Avoid unfair difficulty spikes. Every attack should have counterplay.
+
+### 1.2 Threat anticipation and telegraphing
+
+Before enemies arrive, create a period of growing tension.
+
+Environmental warning systems should include:
+
+- Trees shaking near the forest boundary.
+- Birds suddenly escaping the area.
+- Distant monster calls and unsettling noises.
+- Glowing eyes appearing between trees.
+- Moving silhouettes inside thick fog.
+- Torches flickering when supernatural creatures approach.
+- Distant footsteps and ground vibrations from heavy monsters.
+- A subtle directional threat indicator showing North, East, South, or West.
+
+The player should have enough warning to organize villagers, repair defenses, prepare weapons, and move into position.
+
+The warning system must communicate the actual incoming threat instead of displaying random decorative alerts.
+
+### 1.3 Distinct monster archetypes
+
+Every monster must have its own visual identity, animation style, movement characteristics, intelligence, attack patterns, and tactical purpose.
+
+**A. Shadow Crawler — Swarm Attacker**
+
+- Fast, low-to-the-ground, four-legged creature.
+- Pale glowing eyes and unsettling movement.
+- Travels in packs.
+- Searches for weaknesses in defensive formations.
+- Attempts to bypass barricades and attack exposed villagers.
+- Uses sudden leaps and unpredictable movement.
+- Can retreat briefly before attacking again.
+
+**B. Gloom Stalker — Assassin**
+
+- Semi-transparent while moving through darkness.
+- Becomes visible when attacking or exposed to strong light.
+- Circles the village perimeter.
+- Searches for isolated villagers, vulnerable structures, and unlit areas.
+- Avoids heavily defended and illuminated locations.
+- Uses ambush attacks instead of charging directly into defenses.
+
+**C. Timber Brute — Siege Monster**
+
+- Massive, physically imposing creature with a heavy walking animation.
+- Ignores most ordinary distractions.
+- Prioritizes walls, barricades, gates, and defensive towers.
+- Charges structures and produces powerful impact effects.
+- Damages nearby structures through ground impacts.
+- Must have a noticeable wind-up animation before major attacks.
+
+**D. Banshee Howler — Support Monster**
+
+- Remains behind the main attacking group.
+- Emits visible red soundwave rings.
+- Increases nearby monsters' movement speed and aggression.
+- Can summon additional Shadow Crawlers.
+- Attempts to remain outside immediate melee range.
+- Becomes a high-priority target because eliminating it weakens the entire enemy formation.
+
+**E. The Hollow Mimic — Psychological Horror**
+
+- Appears as a lost survivor, unusual resource node, or seemingly harmless object.
+- Can only use disguises that make sense within the environment.
+- Waits for the player or villagers to approach.
+- Transforms into a disturbing multi-limbed creature.
+- Uses a unique transformation animation, screech, and attack sequence.
+- Introduces uncertainty during exploration without making every encounter a mimic.
+
+### 1.4 Intelligent enemy coordination
+
+Enemies must not behave like disconnected objects that simply chase the nearest character.
+
+Create meaningful behavior states:
+
+- Investigate.
+- Patrol.
+- Detect.
+- Stalk.
+- Coordinate.
+- Attack.
+- Retreat.
+- Reposition.
+- Defend an allied support monster.
+- Destroy defensive structures.
+- Search for alternative routes.
+- React to fire, light, noise, and player movement.
+
+Use appropriate target priorities for each monster type.
+
+Enemies should recognize obstacles, avoid getting permanently stuck, respond to changing battlefield conditions, and choose alternative paths when necessary.
+
+Different monster types should cooperate. For example, Banshee Howlers can support Shadow Crawler packs while Timber Brutes attack the village entrance.
+
+---
+
+# 2. BOSS NIGHTS & UNIQUE ABERRATIONS
+
+Every fifth night introduces a major boss.
+
+Boss encounters must feel different from ordinary enemy waves, with unique animations, abilities, attack phases, sounds, environmental changes, and rewards.
+
+### Example Boss 1 — THE PALE STAG
+
+Visual identity:
+- Enormous skeletal deer-like creature.
+- Branch-like antlers.
+- Glowing pale eyes.
+- Distorted movement and unnatural turning animations.
+- Atmospheric fog surrounding its presence.
+
+Attack phases:
+1. Observes the village from a distance.
+2. Charges through defensive structures.
+3. Summons smaller shadow creatures.
+4. Creates temporary darkness across parts of the battlefield.
+5. Enters a final aggressive phase when its health is low.
+
+### Example Boss 2 — THE ROOTBOUND WARDEN
+
+Visual identity:
+- Huge creature fused with ancient roots and corrupted vegetation.
+- Heavy, organic body animations.
+- Glowing corrupted growths across its body.
+
+Abilities:
+- Creates dangerous root zones.
+- Temporarily immobilizes exposed characters.
+- Summons smaller creatures from underground.
+- Regenerates unless specific vulnerable growths are destroyed.
+
+### Boss rewards
+
+Defeating a boss should provide meaningful rewards:
+
+- Ancient Shards.
+- Rare crafting materials.
+- Unique weapon blueprints.
+- Relics.
+- Special building upgrades.
+- Previously inaccessible exploration opportunities.
+
+Boss encounters should have distinct presentation and should never feel like ordinary monsters with multiplied health.
+
+---
+
+# 3. TACTICAL DEFENSIVE BUILDING SYSTEM
+
+Expand village construction into a meaningful tower-defense system.
+
+The player must be able to strategically construct, position, repair, relocate where appropriate, and upgrade defensive structures.
+
+### Placement mechanics
+
+- Enter a clear building mode.
+- Display a transparent preview of the selected structure.
+- Show its attack or influence radius.
+- Highlight valid and invalid placement locations.
+- Prevent building inside occupied objects or inaccessible terrain.
+- Display the required resources before construction.
+- Show a construction animation rather than instantly spawning completed structures.
+- Allow villagers with relevant professions to assist with construction.
+
+Every tower must have an actual working gameplay function.
+
+### 3.1 Watchtower — Archer Defense
+
+- Elevated wooden structure.
+- Villager guards can occupy the tower.
+- Guards automatically detect and target enemies within range.
+- Visible bow-drawing, aiming, and shooting animations.
+- Arrows must physically travel toward targets.
+- Higher upgrades improve range, accuracy, and firing speed.
+
+Higher tiers unlock:
+- Reinforced platforms.
+- Multiple guards.
+- Faster firing.
+- Fire arrows.
+- Improved targeting.
+
+### 3.2 Brazier Beacon — Light and Protection
+
+- Large burning brazier that projects warm light.
+- Light creates a visible illuminated radius.
+- Reveals Gloom Stalkers.
+- Slows selected shadow-based enemies.
+- Provides a protected area around nearby villagers.
+
+It should consume wood or another appropriate fuel resource.
+
+Its flames must react visually to wind and environmental conditions.
+
+### 3.3 Tesla / Shard Pylon — Advanced Defense
+
+- Unlock in later progression.
+- Requires Ancient Shards.
+- Uses blue-white electrical energy.
+- Detects nearby monsters automatically.
+- Creates visible lightning arcs between up to three enemies.
+- Briefly stuns affected monsters.
+- Requires a meaningful energy or cooldown system.
+
+Upgrading should improve the number of targets, damage, and energy efficiency without making it overwhelmingly powerful.
+
+### 3.4 Spike Barricades
+
+- Physical ground defense.
+- Damages enemies that walk or charge through it.
+- Can slow or temporarily interrupt weaker monsters.
+- Can be destroyed by powerful siege enemies.
+- Must have physical placement and collision behavior.
+
+### 3.5 Tar Traps
+
+- Placeable ground traps.
+- Slow enemies that enter the tar.
+- Coat affected creatures in flammable material.
+- Can ignite when struck by fire arrows, torches, or other fire sources.
+- Burning enemies should show appropriate fire animations and panic behavior.
+
+### 3.6 Upgrade system
+
+Every defensive structure supports three meaningful tiers:
+
+**Tier 1 — Basic**
+- Affordable construction.
+- Simple functionality.
+- Basic appearance.
+
+**Tier 2 — Reinforced**
+- Stronger materials.
+- Improved performance.
+- Visibly reinforced geometry and additional components.
+
+**Tier 3 — Advanced / Ancient**
+- Rune-etched stone, metal detailing, glowing elements, and unique visual effects.
+- Powerful specialized abilities.
+- Higher resource requirements.
+
+Upgrades must visibly transform the actual structure, not merely change a number displayed in a menu.
+
+---
+
+# 4. OPEN-WORLD PROGRESSION & BIOMES
+
+Expand exploration through distinct progression zones surrounding the central village.
+
+Each zone should have its own environmental identity, resources, atmospheric conditions, enemy populations, points of interest, and discoveries.
+
+The player should gradually become capable of exploring increasingly dangerous territories.
+
+### ZONE 1 — THE WHISPERING WOODS
+
+Difficulty: Beginner.
+
+Environment:
+- Dense forests.
+- Small clearings.
+- Abandoned camps.
+- Small streams.
+- Ambient wildlife.
+
+Resources:
+- Wood.
+- Stone.
+- Berries.
+- Basic medicinal materials.
+
+Threats:
+- Weak Shadow Crawlers.
+- Occasional scouts.
+- Limited nighttime ambushes.
+
+Purpose:
+Introduce exploration, resource gathering, crafting, and basic survival.
+
+### ZONE 2 — THE ASHEN RUINS
+
+Difficulty: Intermediate.
+
+Environment:
+- Burned forests.
+- Collapsed cabins.
+- Abandoned settlements.
+- Broken watchtowers.
+- Old roads and ruined structures.
+
+Resources:
+- Scrap metal.
+- Iron ore.
+- Rare equipment.
+- Lootable containers.
+- Old weapon components.
+
+Threats:
+- Gloom Stalkers.
+- Stronger crawler groups.
+- Territorial enemies.
+
+Purpose:
+Introduce better equipment, stronger defenses, and increasingly dangerous expeditions.
+
+### ZONE 3 — THE SUNKEN MIRE & DEEP PINES
+
+Difficulty: High.
+
+Environment:
+- Deep forests.
+- Thick fog.
+- Waterlogged terrain.
+- Strange glowing vegetation.
+- Unusual underground formations.
+
+Resources:
+- Rare medicinal herbs.
+- Shard crystal clusters.
+- Advanced crafting materials.
+- Ancient remains.
+
+Threats:
+- Timber Brute nests.
+- More coordinated enemy groups.
+- Stronger supernatural creatures.
+
+Purpose:
+Introduce advanced equipment, rare materials, and challenging exploration.
+
+### ZONE 4 — THE OLD RADIO OUTPOST
+
+Difficulty: Endgame.
+
+Environment:
+- Large abandoned research facility.
+- Damaged communication towers.
+- Underground sections.
+- Security rooms.
+- Strange electrical activity.
+- Evidence of an unknown experiment.
+
+Resources:
+- Weapon blueprints.
+- Advanced technological components.
+- Rare artifacts.
+- Ancient Shards.
+- Story logs and recordings.
+
+Threats:
+- Unique high-level monsters.
+- Heavily guarded entrances.
+- Dangerous environmental events.
+
+Purpose:
+Connect the open-world mystery to the existing central village television monitor.
+
+Discoveries here should gradually explain what happened to the world and why the monsters are attacking.
+
+### Exploration requirements
+
+Do not make zones feel like empty decorative backgrounds.
+
+Every zone should contain:
+- Discoverable locations.
+- Functional resource nodes.
+- Environmental storytelling.
+- Hidden loot.
+- Enemy encounters.
+- Distinct visual landmarks.
+- Reasons to return after unlocking better equipment.
+
+Use progression to encourage exploration rather than relying on invisible barriers alone.
+
+---
+
+# 5. DYNAMIC WORLD EVENTS
+
+The world should occasionally produce unexpected events that interrupt predictable gameplay routines.
+
+Events should be triggered through appropriate world conditions, time progression, location, and player decisions.
+
+### 5.1 Traveling Night Merchant
+
+Occasionally, a mysterious merchant arrives near the village campfire at dawn.
+
+Visual presentation:
+- Lantern-lit traveling cart.
+- Distinct merchant character.
+- Animated cart components.
+- Warm lighting and smoke.
+- Unique arrival sound.
+
+Trading inventory:
+- Rare blueprints.
+- Weapon upgrades.
+- Relics.
+- Unusual materials.
+- Special crafting items.
+
+Accept currencies such as Ancient Shards, surplus food, and other appropriate resources.
+
+The merchant should not appear every day. His inventory and availability should vary.
+
+### 5.2 Survivor Rescue Encounters
+
+Discover trapped survivors throughout the open world.
+
+Examples:
+- Survivor hiding inside an abandoned cabin.
+- Injured traveler surrounded by monsters.
+- Group trapped inside a damaged outpost.
+- Wanderer being pursued through the forest.
+
+Rescue mechanics:
+- Locate the survivor.
+- Clear nearby threats.
+- Interact with them.
+- Escort them safely to the village.
+
+Survivors should physically follow the player and respond to danger during the journey.
+
+After rescue, they become actual village inhabitants with their own behavior and assigned roles.
+
+Unique professions:
+
+**Master Blacksmith**
+- Improves crafting.
+- Unlocks advanced equipment.
+- Repairs weapons and armor.
+
+**Sharpshooter**
+- Provides ranged defensive support.
+- Can occupy watchtowers.
+- Improves village protection.
+
+**Herbalist**
+- Produces medicinal items.
+- Improves healing supplies.
+- Helps maintain useful medicinal resources.
+
+These professions must provide functional gameplay benefits.
+
+### 5.3 Cursed Relics & Ancient Shrines
+
+Add mysterious stone shrines and ancient altars throughout dangerous regions.
+
+Each shrine offers a meaningful choice between a benefit and a consequence.
+
+Example:
+
+**BLOOD MOON PACT**
+- Reward: +50% weapon damage.
+- Consequence: The next monster wave contains significantly more enemies.
+
+**THE WATCHER'S EYE**
+- Reward: Reveals nearby hidden enemies and rare resources.
+- Consequence: Makes the player easier for supernatural enemies to detect.
+
+**ASHEN RESURRECTION**
+- Reward: Revives one fallen villager.
+- Consequence: Attracts a powerful enemy encounter.
+
+Shrines must have:
+- Unique visual designs.
+- Atmospheric audio.
+- Interaction animations.
+- Clear descriptions of their consequences.
+- Persistent state so players cannot repeatedly exploit rewards.
+
+Make these encounters mysterious and consequential.
+
+---
+
+# 6. WEAPON MASTERY & CHARACTER PROGRESSION
+
+Make combat progression rewarding without turning the game into a simple stat-grinding system.
+
+### Weapon proficiency
+
+Using a particular weapon gradually improves proficiency with that weapon.
+
+Unlock abilities such as:
+- Charged heavy attacks.
+- Dash strikes.
+- Faster combinations.
+- Improved aiming.
+- Multi-arrow volleys.
+- Special weapon techniques.
+
+Each weapon category should have its own distinct progression path.
+
+### Equipment tiers
+
+Implement three broad crafting tiers:
+
+**Wooden / Primitive**
+- Early survival equipment.
+- Affordable materials.
+- Basic combat functionality.
+
+**Iron / Reinforced**
+- Stronger weapons and armor.
+- Better durability.
+- Improved combat capabilities.
+
+**Shard-Forged / Ancient**
+- Rare equipment.
+- Unique visual appearances.
+- Special abilities.
+- Expensive crafting requirements.
+
+Equipment progression should create meaningful choices rather than making every new weapon strictly better in every situation.
+
+### Character development
+
+The player should be able to improve:
+- Combat ability.
+- Survival capability.
+- Gathering efficiency.
+- Mobility.
+- Crafting specialization.
+
+Make progression visible through animations, equipment changes, and clear feedback.
+
+---
+
+# 7. SYSTEM INTERCONNECTION — CRITICAL
+
+All new systems must connect to the existing game's actual mechanics.
+
+Examples of required interactions:
+
+- The Watchtower needs a recruited villager to function at full capacity.
+- A Sharpshooter should perform better when assigned to defensive structures.
+- A Brazier should reveal Gloom Stalkers.
+- A Banshee Howler should strengthen nearby attacking monsters.
+- A Timber Brute should prioritize destroying towers and barricades.
+- Tar traps should interact with fire sources.
+- Ancient Shards should be used for advanced technology and equipment.
+- The Blacksmith should unlock valuable crafting recipes.
+- Rescued survivors should increase village population and productivity.
+- Exploring the Radio Outpost should reveal clues related to the village television mystery.
+- Boss rewards should unlock meaningful late-game progression.
+
+These interactions are what make the world feel like one connected ecosystem.
+
+Do not implement systems as isolated menus with no relationship to actual gameplay.
+
+---
+
+# 8. VISUAL QUALITY, ANIMATION & ATMOSPHERE
+
+Visual quality is a major priority.
+
+Maintain the existing visual identity, but significantly improve environmental detail, animation quality, lighting, and presentation.
+
+### Monster presentation
+
+Each monster needs:
+- Unique body proportions and silhouettes.
+- Distinctive idle, movement, attack, hit, death, and reaction animations.
+- Proper movement transitions.
+- Context-sensitive attack animations.
+- Distinct visual and audio effects.
+- Appropriate particles and environmental reactions.
+
+Avoid using the same model with different colors to represent different monsters.
+
+### Environment and atmosphere
+
+Implement:
+- Dynamic day/night lighting.
+- Atmospheric fog and volumetric-style depth where supported.
+- Moving vegetation.
+- Wind effects.
+- Firelight and dynamic shadows.
+- Environmental particles.
+- Monster silhouettes at a distance.
+- Weather conditions where supported.
+- Screen shake for heavy impacts, with restrained intensity.
+
+Nighttime should feel genuinely dangerous, while daytime should provide enough visual clarity and atmosphere for exploration.
+
+### Combat feedback
+
+Every important interaction should produce readable feedback.
+
+Examples:
+- Arrows visibly hitting monsters.
+- Lightning traveling between targets.
+- Armor reacting to impacts.
+- Structures shaking and breaking.
+- Fire spreading across tar-coated enemies.
+- Monsters reacting to damage and environmental hazards.
+- Boss attacks producing recognizable warning effects.
+
+### Sound design
+
+Use layered sound design:
+- Forest ambience.
+- Distant howls.
+- Footsteps.
+- Monster-specific vocalizations.
+- Tower firing sounds.
+- Construction sounds.
+- Combat impacts.
+- Boss encounter themes.
+- Merchant and survivor interaction sounds.
+
+Audio should reinforce gameplay information, not just act as background decoration.
+
+---
+
+# 9. UI, PLAYER FEEDBACK & GAMEPLAY CLARITY
+
+Keep the current interface style consistent.
+
+Extend it with polished, readable indicators for:
+
+- Current day and night.
+- Wave number.
+- Incoming threat direction.
+- Boss warnings.
+- Village condition.
+- Available resources.
+- Structure health and upgrade level.
+- Weapon proficiency.
+- Survivor rescue status.
+- Active relic effects.
+
+Building menus should clearly display:
+- Structure preview.
+- Construction cost.
+- Upgrade cost.
+- Attack or influence radius.
+- Current tier.
+- Available abilities.
+
+Important information should be easy to understand without overwhelming the screen.
+
+Use smooth transitions, responsive interaction feedback, and clear icons.
+
+---
+
+# 10. SAVING, PERFORMANCE & RELIABILITY
+
+All progression must work reliably.
+
+Persist:
+- Current night and progression.
+- Unlocked exploration zones.
+- Player equipment and proficiency.
+- Resources.
+- Constructed and upgraded structures.
+- Village population and professions.
+- Rescued survivors.
+- Completed events.
+- Boss victories.
+- Unlocked blueprints and relics.
+
+Additional requirements:
+- Avoid duplicate enemy spawning.
+- Avoid broken pathfinding and permanently stuck characters.
+- Prevent structures from firing through invalid obstacles.
+- Avoid excessive particle and lighting effects that damage performance.
+- Clean up defeated enemies and unnecessary effects.
+- Ensure UI updates correctly when resources change.
+- Ensure world events cannot trigger repeatedly without valid conditions.
+- Keep the game stable during large enemy waves.
+
+Use existing save architecture wherever possible. Do not replace a working system unnecessarily.
+
+---
+
+# 11. IMPLEMENTATION & TESTING REQUIREMENTS
+
+Do not merely create a visual demonstration or describe how the systems might work.
+
+Implement the actual systems in the existing project.
+
+### Implementation order
+
+**Phase 1 — Core survival expansion**
+- Functional night wave progression.
+- Telegraphing and threat indicators.
+- Distinct enemy archetypes.
+- Enemy behavior and coordination.
+- Boss encounters.
+
+**Phase 2 — Village defense**
+- Building placement.
+- Watchtowers.
+- Braziers.
+- Barricades and tar traps.
+- Tesla / Shard Pylons.
+- Structure upgrades.
+
+**Phase 3 — World progression**
+- Four distinct exploration zones.
+- Resource distribution.
+- New enemy populations.
+- Exploration rewards.
+- Radio Outpost mystery.
+
+**Phase 4 — Dynamic events**
+- Traveling merchant.
+- Survivor rescue and recruitment.
+- Village professions.
+- Shrines and cursed relics.
+
+**Phase 5 — Long-term progression**
+- Weapon proficiency.
+- Crafting tiers.
+- Character development.
+- Advanced blueprints.
+- Late-game progression.
+
+**Phase 6 — Polish and optimization**
+- Animation refinement.
+- Lighting.
+- Particles.
+- Sound design.
+- UI improvements.
+- Performance testing.
+- Bug fixing.
+
+### Functional acceptance tests
+
+Consider a system complete only after its actual gameplay behavior has been tested.
+
+Examples:
+
+1. A complete night cycle starts, telegraphs an attack, spawns enemies from the indicated direction, and ends correctly.
+2. Shadow Crawlers can identify and exploit gaps in defenses.
+3. Gloom Stalkers become visible inside the Brazier's light.
+4. Timber Brutes can damage and destroy defensive structures.
+5. Banshee Howlers actually strengthen nearby enemies.
+6. The player can construct and upgrade towers using real resources.
+7. Occupied watchtowers fire projectiles at valid targets.
+8. Tar traps and fire sources interact correctly.
+9. A boss has multiple functional attack phases.
+10. Survivors can be rescued, escorted, recruited, and assigned professions.
+11. Each exploration zone contains functional resources and encounters.
+12. Merchants and world events work without breaking progression.
+13. Player progress survives saving and reloading.
+
+Fix discovered bugs rather than hiding them with visual effects.
+
+---
+
+# FINAL CREATIVE DIRECTION
+
+The ultimate goal is to make **Village // After Dark** feel like a living survival world rather than a repetitive tower-defense game.
+
+The player should constantly have meaningful decisions:
+
+- Explore farther for rare resources or return before darkness.
+- Strengthen village defenses or invest in personal equipment.
+- Rescue survivors or prioritize immediate survival.
+- Construct more towers or save resources for advanced technology.
+- Accept cursed powers or avoid their consequences.
+- Fight a dangerous boss or prepare the village for another night.
+
+The world should continuously create tension, discoveries, tactical decisions, and unexpected situations.
+
+**Most importantly: build actual gameplay depth, not just more content.**
+
+Every new feature must be functional, interconnected, visually polished, and meaningful to the player's survival.
+
+Preserve what already works. Improve what is weak. Implement the expansion directly into the existing game, and test every major mechanic before considering the work complete.
